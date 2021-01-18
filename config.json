@@ -4,7 +4,7 @@
   "slug": "letsencrypt",
   "description": "Manage certificate from Let's Encrypt",
   "url": "https://github.com/kylinfedora/letsencrypt",
-  "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
+  "arch": ["amd64", "i386"],
   "startup": "once",
   "init": false,
   "boot": "manual",
@@ -79,5 +79,5 @@
       "aliyun_access_key_secret": "str?"
     }
   },
-  "image": "kylin/{arch}-addon-letsencrypt"
+  "image": "kylin/amd64-addon-letsencrypt"
 }

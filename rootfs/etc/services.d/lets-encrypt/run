@@ -96,7 +96,7 @@ elif [ "${DNS_PROVIDER}" == "dns-aliyun" ]; then
     if bashio::config.exists 'dns.aliyun_access_key'; then
         bashio::log.info "Use aliyun access key"
         echo -e "certbot_dns_aliyun:dns_aliyun_access_key = $(bashio::config 'dns.aliyun_access_key')\n" \
-            "certbot_dns_aliyun:dns_aliyun_access_key_secret = $(bashio::config 'aliyun_access_key_secret')\n" >> /data/dnsapikey
+            "certbot_dns_aliyun:dns_aliyun_access_key_secret = $(bashio::config 'dns.aliyun_access_key_secret')\n" >> /data/dnsapikey
         cat /data/dnsapikey | grep ^certbot_dns_aliyun
     fi
     PROVIDER_ARGUMENTS+=("--authenticator" "certbot_dns_aliyun:dns-aliyun" "--certbot_dns_aliyun:dns-aliyun-credentials" /data/dnsapikey)
@@ -134,13 +134,11 @@ if [ "$CHALLENGE" == "dns" ]; then
         --email "$EMAIL" --agree-tos \
         --config-dir "$CERT_DIR" --work-dir "$WORK_DIR" \
         --preferred-challenges "$CHALLENGE" "${DOMAIN_ARR[@]}" "${PROVIDER_ARGUMENTS[@]}"
-    history
 else
     certbot certonly --non-interactive --keep-until-expiring --expand \
         --email "$EMAIL" --agree-tos \
         --config-dir "$CERT_DIR" --work-dir "$WORK_DIR" \
         --preferred-challenges "$CHALLENGE" "${DOMAIN_ARR[@]}" "${ACME_CUSTOM_SERVER_ARGUMENTS[@]}" --standalone
-    history
 fi
 
 # Get the last modified cert directory and copy the cert and private key to store

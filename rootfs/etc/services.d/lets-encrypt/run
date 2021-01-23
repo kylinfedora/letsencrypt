@@ -95,8 +95,8 @@ elif [ "${DNS_PROVIDER}" == "dns-gandi" ]; then
 elif [ "${DNS_PROVIDER}" == "dns-aliyun" ]; then
     if bashio::config.exists 'dns.aliyun_access_key'; then
         bashio::log.info "Use aliyun access key"
-        echo "certbot_dns_aliyun:dns_aliyun_access_key = $(bashio::config 'dns.aliyun_access_key')" >> /data/dnsapikey
-        echo "certbot_dns_aliyun:dns_aliyun_access_key_secret = $(bashio::config 'aliyun_access_key_secret')" >> /data/dnsapikey
+        echo -e "certbot_dns_aliyun:dns_aliyun_access_key = $(bashio::config 'dns.aliyun_access_key')\n" \
+            "certbot_dns_aliyun:dns_aliyun_access_key_secret = $(bashio::config 'aliyun_access_key_secret')\n" >> /data/dnsapikey
         cat /data/dnsapikey | grep ^certbot_dns_aliyun
     fi
     PROVIDER_ARGUMENTS+=("--authenticator" "certbot_dns_aliyun:dns-aliyun" "--certbot_dns_aliyun:dns-aliyun-credentials" /data/dnsapikey)

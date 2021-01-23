@@ -22,6 +22,7 @@ RUN apk add --no-cache --update \
         openssl-dev \
     && pip3 install --no-cache-dir --find-links \
         "https://wheels.home-assistant.io/alpine-$(cut -d '.' -f 1-2 < /etc/alpine-release)/amd64/" \
+        idna==2.10 \
         certbot==1.2.0 \
         certbot-dns-cloudflare==1.2.0 \
         certbot-dns-cloudxns==1.2.0 \

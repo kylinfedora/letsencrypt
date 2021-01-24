@@ -99,7 +99,7 @@ elif [ "${DNS_PROVIDER}" == "dns-aliyun" ]; then
         echo "certbot_dns_aliyun:dns_aliyun_access_key_secret = $(bashio::config 'dns.aliyun_access_key_secret')" >> /data/dnsapikey
         cat /data/dnsapikey | grep ^certbot_dns_aliyun
     fi
-    PROVIDER_ARGUMENTS+=("--authenticator" "certbot_dns_aliyun:dns-aliyun" "--certbot_dns_aliyun:dns-aliyun-credentials" /data/dnsapikey)
+    PROVIDER_ARGUMENTS+=("--authenticator" "certbot-dns-aliyun:dns-aliyun" "--certbot-dns-aliyun:dns-aliyun-credentials" /data/dnsapikey)
 
 # Njalla
 elif [ "${CHALLENGE}" == "dns" ] && [ "${DNS_PROVIDER}" == "dns-njalla" ]; then

@@ -11,16 +11,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@master
 
-      - name: Check add-on
-        id: check
-        run: |
-          if [[ "${{ steps.info.outputs.architectures }}" =~ ${{ matrix.arch }} ]]; then
-             echo "::set-output name=build_arch::true";
-           else
-             echo "${{ matrix.arch }} is not a valid arch for letsencrypt, skipping build";
-          fi
       - name: Set build arguments
-        if: steps.check.outputs.build_arch == 'true'
         run: |
           if [[ -z "${{ github.head_ref }}" ]] && [[ "${{ github.event_name }}" == "push" ]]; then
               echo "BUILD_ARGS=--docker-hub-check" >> $GITHUB_ENV;

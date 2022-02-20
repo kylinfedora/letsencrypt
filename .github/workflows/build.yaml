@@ -2,7 +2,6 @@ name: Publish Docker
 on: [push]
 jobs:
   build:
-    needs: init
     runs-on: ubuntu-latest
     name: Build ${{ matrix.arch }} letsencrypt-add-on
     strategy:

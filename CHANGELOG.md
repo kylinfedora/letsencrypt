@@ -1,8 +1,14 @@
 # Changelog
 
-## 4.12.0
+## 4.12.1
 
 - Add support for aliyun DNS
+
+## 4.12.0
+
+- Update Certbot 1.21.0 & Plugins
+- Update to Python 3.9
+- Update to Alpine 3.14
 
 ## 4.11.0
 

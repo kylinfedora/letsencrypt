@@ -11,4 +11,4 @@ jobs:
         name: kylin/amd64-addon-letsencrypt
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        default_branch: 4.12.12
+        tags: "latest,4.12.12"

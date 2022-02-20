@@ -5,7 +5,7 @@ description: Manage certificate from Let's Encrypt
 url: https://github.com/kylin/letsencrypt
 arch: amd64
 boot: manual
-image: kylin/amd-addon-letsencrypt
+image: kylin/amd64-addon-letsencrypt
 init: false
 map:
   - ssl:rw

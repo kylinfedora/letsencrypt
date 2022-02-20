@@ -1,15 +1,15 @@
 ARG BUILD_FROM
-FROM $BUILD_FROM
+FROM ghcr.io/home-assistant/amd64-base-python:3.9-alpine3.14
 
 # setup base
-ARG \
-    CERTBOT_VERSION \
-    CERTBOT_DNS_DIRECTADMIN_VERSION \
-    CERTBOT_NETCUP_VERSION \
-    CERTBOT_NJALLA_VERSION \
-    CERTBOT_GANDI_VERSION \
-    CERTBOT_DNS_TRANSIP_VERSION \
-    CERTBOT_DNS_ALIYUN_VERSION
+#ARG \
+#    CERTBOT_VERSION \
+#    CERTBOT_DNS_DIRECTADMIN_VERSION \
+#    CERTBOT_NETCUP_VERSION \
+#    CERTBOT_NJALLA_VERSION \
+#    CERTBOT_GANDI_VERSION \
+#    CERTBOT_DNS_TRANSIP_VERSION \
+#    CERTBOT_DNS_ALIYUN_VERSION
 
 RUN \
     set -x \
@@ -24,27 +24,27 @@ RUN \
         openssl-dev \
         cargo \
     && pip3 install --no-cache-dir \
-        certbot==${CERTBOT_VERSION} \
-        certbot-dns-cloudflare==${CERTBOT_VERSION} \
-        certbot-dns-cloudxns==${CERTBOT_VERSION} \
-        certbot-dns-digitalocean==${CERTBOT_VERSION} \
-        certbot-dns-directadmin==${CERTBOT_DNS_DIRECTADMIN_VERSION} \
-        certbot-dns-dnsimple==${CERTBOT_VERSION} \
-        certbot-dns-dnsmadeeasy==${CERTBOT_VERSION} \
-        certbot-dns-gehirn==${CERTBOT_VERSION} \
-        certbot-dns-google==${CERTBOT_VERSION} \
-        certbot-dns-linode==${CERTBOT_VERSION} \
-        certbot-dns-luadns==${CERTBOT_VERSION} \
-        certbot-dns-njalla==${CERTBOT_NJALLA_VERSION} \
-        certbot-dns-nsone==${CERTBOT_VERSION} \
-        certbot-dns-ovh==${CERTBOT_VERSION} \
-        certbot-dns-rfc2136==${CERTBOT_VERSION} \
-        certbot-dns-route53==${CERTBOT_VERSION} \
-        certbot-dns-sakuracloud==${CERTBOT_VERSION} \
-        certbot-dns-netcup==${CERTBOT_NETCUP_VERSION} \
-        certbot-plugin-gandi==${CERTBOT_GANDI_VERSION} \
-        certbot-dns-transip==${CERTBOT_DNS_TRANSIP_VERSION} \
-        certbot-dns-aliyun==${CERTBOT_DNS_ALIYUN_VERSION} \
+        certbot==1.23.0 \
+        certbot-dns-cloudflare==1.23.0 \
+        certbot-dns-cloudxns==1.23.0 \
+        certbot-dns-digitalocean==1.23.0 \
+        certbot-dns-directadmin==0.0.24 \
+        certbot-dns-dnsimple==1.23.0 \
+        certbot-dns-dnsmadeeasy==1.23.0 \
+        certbot-dns-gehirn==1.23.0 \
+        certbot-dns-google==1.23.0 \
+        certbot-dns-linode==1.23.0 \
+        certbot-dns-luadns==1.23.0 \
+        certbot-dns-njalla==1.0.0 \
+        certbot-dns-nsone==1.23.0 \
+        certbot-dns-ovh==1.23.0 \
+        certbot-dns-rfc2136==1.23.0 \
+        certbot-dns-route53==1.23.0 \
+        certbot-dns-sakuracloud==1.23.0 \
+        certbot-dns-netcup==1.1.1 \
+        certbot-plugin-gandi==1.3.2 \
+        certbot-dns-transip==0.4.3 \
+        certbot-dns-aliyun==0.38.1 \
     && apk del .build-dependencies
 
 # Copy data

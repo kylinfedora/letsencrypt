@@ -20,3 +20,13 @@ The generated certificate can be used within others addons. By default the path 
 [armhf-shield]: https://img.shields.io/badge/armhf-yes-green.svg
 [armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg
 [i386-shield]: https://img.shields.io/badge/i386-yes-green.svg
+
+aliyun
+Certbot 支持自动申请 LetsEncrypt 的泛域名证书，但是官方插件不支持阿里云，在 GitHub 搜索发现已经有人写好了阿里云 DNS 插件，下面只需要进行简单的配置即可免费申请一个泛域名证书并自动续订。
+
+Example credentials file using restricted API Token (recommended):
+
+dns:
+  provider: dns-aliyun
+  aliyun_access_key = 12345678
+  aliyun_access_key_secret = 1234567890abcdef1234567890abcdef
